@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+    <meta charset="UTF-8">
+    <title>Новинний портал "Громадський ревізор" - Зворотній зв'язок</title>
+</head>
+<body>
+    <header>
+        <img src="media/logo.jpg" alt="Логотип новинного порталу Громадський ревізор" width="48" height="48">
+        <h1>Громадський ревізор</h1>
+        <nav>
+            <a href="index.html#hot-news">Гарячі новини</a>
+            <a href="culture_news.html">Новини культури</a>
+            <a href="index.html#economy-news">Новини економіки</a>
+            <a href="feedback.html">Зворотній зв'язок</a>
+        </nav>
+    </header>
+    <hr>
+    <main>
+        <h2>Зворотній зв'язок</h2>
+        <section>
+            <form>
+                <fieldset>
+                    <legend>Персональна інформація</legend>
+                    <p>
+                        <label for="fullname">Прізвище та ім'я:</label>
+                        <input type="text" id="fullname" name="fullname" placeholder="Шевченко Тарас" required>
+                    </p>
+                    <p>
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" placeholder="example@gmail.com" required>
+                    </p>
+                    <p>
+                        <label for="age">Вік:</label>
+                        <input type="number" id="age" name="age" min="1" max="120">
+                    </p>
+                    <p>Освіта:</p>
+                    <p>
+                        <input type="radio" id="edu-complete" name="education" value="повна" required>
+                        <label for="edu-complete">Повна</label>
+
+                        <input type="radio" id="edu-incomplete" name="education" value="неповна">
+                        <label for="edu-incomplete">Неповна</label>
+
+                        <input type="radio" id="edu-higher" name="education" value="вища">
+                        <label for="edu-higher">Вища</label>
+
+                        <input type="radio" id="edu-professional" name="education" value="професійна">
+                        <label for="edu-professional">Професійна</label>
+                    </p>
+                </fieldset>
+                <p>
+                    <label for="purpose">Мета зворотнього зв'язку:</label> <br>
+                    <select id="purpose" name="purpose">
+                        <option value="cooperation">Співпраця</option>
+                        <option value="copyright">Скарга на порушення права власності</option>
+                        <option value="suggestion">Пропозиція</option>
+                        <option value="error">Наявність помилки</option>
+                        <option value="other">Інше</option>
+                    </select>
+                </p>
+                <p>
+                    <label for="details">Детально:</label> <br>
+                    <textarea id="details" name="details" rows="6" cols="80" maxlength="500" placeholder="Опишіть ваше звернення або пропозицію тут..." style="resize: none;" required></textarea>
+                </p>
+                <p>
+                    <input type="checkbox" id="consent" name="consent" required>
+                    <label for="consent"> Надаю згоду на обробку персональних даних</label>
+                </p>
+                <p>
+                    <input type="submit" value="Відправити">
+                    <input type="reset" value="Очистити форму">
+                </p>
+            </form>
+        </section>
+        <a href="index.html">Назад на головну сторінку</a>
+    </main>
+    <hr>
+    <footer>
+        <section>
+            <h3>Контактна інформація</h3>
+            <p>Адреса: м. Бровари, вул. Незалежності 1</p>
+            <p>Контактні телефони: +38 (096) 000 00 00, + 38 (044) 000 01 00</p>
+        </section>
+        <p>&copy; 2026 Громадський ревізор. Всі права захищено.</p>
+    </footer>
+</body>
+</html>
