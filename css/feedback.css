@@ -1,0 +1,69 @@
+.page-feedback > main, .page-feedback > footer { 
+    max-width: 760px;
+    margin: 0 auto; 
+}
+ 
+form {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    align-content: flex-start;
+    gap: 16px;
+}
+
+form > fieldset {
+    order: 1;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 100%;
+    margin: 0;
+}
+
+form > p { 
+    order: 2; 
+    flex: 1 1 100%; 
+    margin: 0; 
+}
+
+form > p:nth-of-type(3) {
+    flex-grow: 2;
+    flex-shrink: 1;
+    flex-basis: 300px;
+    align-self: center;
+}
+
+form > p:nth-of-type(4) { 
+    flex: 0 0 auto; 
+    align-self: flex-end; 
+}
+ 
+label { 
+    display: block; 
+    font-weight: 700; 
+}
+
+input + label { 
+    display: inline; 
+    margin-right: 12px; 
+    font-weight: 400; 
+}
+ 
+input:not([type="radio"], [type="checkbox"], [type="submit"], [type="reset"]),
+select, textarea {
+    width: 100%;
+    padding: 8px;
+    border: 1px solid var(--line);
+    font: inherit;
+}
+
+input[type="submit"], input[type="reset"] { 
+    padding: 10px 20px; 
+    cursor: pointer; 
+}
+
+input[type="submit"] { 
+    background: var(--accent); 
+    border: 0; 
+    color: white; 
+}

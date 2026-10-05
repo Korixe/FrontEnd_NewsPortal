@@ -2,9 +2,18 @@
 <html lang="uk">
 <head>
     <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/layout.css">
+    <link rel="stylesheet" href="css/homePage.css">
     <title>Новинний портал "Громадський ревізор"</title>
+    <style>
+        #team {
+            max-height: 340px;
+            overflow: auto;
+        }
+    </style>
 </head>
-<body>
+<body class="page-home">
     <header>
         <img src="media/logo.jpg" alt="Логотип новинного порталу Громадський ревізор" width="48" height="48">
         <h1>Громадський ревізор</h1>
@@ -17,7 +26,7 @@
     </header>
     <hr>
     <main>
-        <section>
+        <section id="mission">
             <h2>Мета створення порталу</h2>
             <p><b>"Громадський ревізор"</b> - незалежний новинний портал, метою якого є <b>об'єктивне</b> висвітлення подій у сфері культури, економіки та суспільного життя України. Ми <em>впевнені</em>, що <b><span style="color:#7a1f2b;">якісна журналістика</span></b> є основою свідомого вибору кожного громадянина, <u>тому щодня перевіряємо факти</u> перед публікацією, адже кожна <i>деталь</i> має значення.</p>
             <h3>Завдання для досягнення мети:</h3>
@@ -28,7 +37,7 @@
             </ol>
         </section>
         <hr>
-        <section>
+        <section id="team">
             <h2>Наша команда та джерела інформації</h2>
             <table border="1">
                 <caption>Інформація про працівників</caption>
@@ -89,7 +98,7 @@
             </table>
         </section>
         <hr>
-        <section>
+        <section id="editor">
             <h2>Наш головний редактор</h2>
             <img src="media/person.jpg" alt="Фото головного редактора" width="140" height="140">
             <p><b>Міхопарова Кіра</b> - головний редактор порталу "Громадський ревізор" з 2020 року.</p>
@@ -121,7 +130,7 @@
     </aside>
     <hr>
     <footer>
-        <section>
+        <section tabindex="0">
             <h3>Контактна інформація</h3>
             <p>Адреса: м. Бровари, вул. Незалежності 1</p>
             <p>Контактні телефони: +38 (096) 000 00 00, + 38 (044) 000 01 00</p>

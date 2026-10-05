@@ -1,0 +1,82 @@
+:root {
+    --accent: #7a1f2b;
+    --soft: hsl(350, 45%, 94%);
+    --line: rgb(200, 208, 216);
+    --head: Georgia, serif;
+    --body: "Segoe UI", Arial, sans-serif;  
+}
+
+* {
+    box-sizing: border-box;
+}
+
+hr {
+    display: none;
+}
+
+:focus { 
+    outline: 2px solid var(--accent); 
+}
+
+img {
+    max-width: 100%;
+}
+
+body {
+    margin: 0;
+    padding: 0 24px;
+    background: linear-gradient(180deg, hsl(210, 25%, 97%), hsl(210, 20%, 91%));
+    background-attachment: fixed;
+    color: hsl(0, 0%, 15%);
+    font: 400 1rem/1.6 var(--body);
+}
+
+h1, h2, h3 {
+    font-family: var(--head);
+    line-height: 1.25;
+}
+
+h2 {
+    margin: 0 0 16px;
+    font-size: 1.5rem;
+}
+
+b {
+    color: var(--accent);
+}
+
+a:link, a:visited {
+    color: var(--accent);
+}
+
+a:hover, a:focus {
+    color: hsl(350, 60%, 15%);
+    text-decoration: none;
+}
+
+a:active {
+    color: darkorange;
+}
+
+a[target="_blank"]::after {
+    content: " \2197";
+    font-size: 0.8em;
+}
+
+main > a {
+    display: inline-block;
+    margin: 8px 0 16px;
+    padding: 8px 16px;
+    border: 2px solid var(--accent);
+    border-radius: 4px;
+    font-weight: 600;
+    text-decoration: none;
+}
+ 
+main > a::before {
+    content: "\2190  ";
+}
+
+main > a:hover {
+    background: var(--soft);
+}
