@@ -79,7 +79,7 @@ function calculateAuthorPaymentForDay(array, year, monthIndex, day) {
 console.log("\nЗавдання 1:");
 console.log("\n1а. Новини, впорядковані за автором:");
 const sortedNews = sortNewsByAuthor(newsList);
-sortedNews.forEach((n) => console.log(`#${n.id} | ${n.author} | "${n.title}"`));
+console.log(sortedNews);
 console.log("\n1а. Середня довжина повідомлення по авторах: ", avgMessageLengthByAuthor(sortedNews));
 console.log("\n1б. Новина з максимальною кількістю читачів за добу 1:");
 const topNews = findTopReadersDay1News(newsList);
@@ -117,10 +117,6 @@ class User {
     } else {
       console.log(`Некоректне значення віку для ${this.lastName}:`, value);
     }
-  }
-
-  toString() {
-    return `${this.lastName} ${this.firstName}, ${this.getAge()} р., освіта: ${this.education}`;
   }
 
   get gender(){
