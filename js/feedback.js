@@ -2,7 +2,35 @@ const details = document.getElementsByName("details")[0];
 const detailsBlock = details.parentNode;
 let hint = null;
 
+const HINT_WIDTH = 190;
+const HINT_GAP = 12;
+
 detailsBlock.style.position = "relative";
+
+function placeHint() {
+  const rightEdge = detailsBlock.getBoundingClientRect().right;
+  const freeSpace = document.documentElement.clientWidth - rightEdge;
+
+  if (freeSpace >= HINT_WIDTH + HINT_GAP + 16) {
+    hint.style.position = "absolute";
+    hint.style.display = "";
+    hint.style.width = HINT_WIDTH + "px";
+    hint.style.left = "100%";
+    hint.style.top = "50%";
+    hint.style.marginTop = "0";
+    hint.style.marginLeft = HINT_GAP + "px";
+    hint.style.transform = "translateY(-50%)";
+  } else {
+    hint.style.position = "static";
+    hint.style.display = "block";
+    hint.style.width = "auto";
+    hint.style.left = "";
+    hint.style.top = "";
+    hint.style.marginTop = "8px";
+    hint.style.marginLeft = "0";
+    hint.style.transform = "none";
+  }
+}
 
 function showHint() {
   details.style.backgroundColor = "rgb(253, 242, 244)";
@@ -13,8 +41,6 @@ function showHint() {
   if (hint === null) {
     hint = document.createElement("span");
     hint.innerHTML = "Дякуючи Вам, ми стаємо кращі! Конкретизуйте мету звернення, будь ласка";
-    hint.style.position = "absolute";
-    hint.style.width = "190px";
     hint.style.padding = "8px 12px";
     hint.style.background = "white";
     hint.style.border = "1px solid #7a1f2b";
@@ -22,13 +48,10 @@ function showHint() {
     hint.style.boxShadow = "0 2px 8px rgba(0, 0, 0, 0.2)";
     hint.style.fontSize = "0.85rem";
     hint.style.zIndex = "50";
-
-    hint.style.left = "100%";
-    hint.style.top = "50%";
-    hint.style.marginLeft = "12px";
-    hint.style.transform = "translateY(-50%)";
+    hint.style.boxSizing = "border-box";
 
     detailsBlock.appendChild(hint);
+    placeHint();
   }
 }
 

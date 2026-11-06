@@ -1,10 +1,15 @@
-.page-feedback > main, .page-feedback > footer { 
+.page-feedback > main { 
     max-width: 760px;
     margin: 0 auto; 
+    padding-top: 24px;
 }
  
 form {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -webkit-box-orient: horizontal;
+    -ms-flex-flow: row wrap;
     flex-flow: row wrap;
     justify-content: space-between;
     align-items: flex-start;
@@ -17,12 +22,14 @@ form > fieldset {
     flex-grow: 1;
     flex-shrink: 1;
     flex-basis: 100%;
+    min-width: 0;
     margin: 0;
 }
 
 form > p { 
     order: 2; 
     flex: 1 1 100%; 
+    min-width: 0;
     margin: 0; 
 }
 
@@ -48,9 +55,11 @@ input + label {
     margin-right: 12px; 
     font-weight: 400; 
 }
- 
-input:not([type="radio"], [type="checkbox"], [type="submit"], [type="reset"]),
-select, textarea {
+
+input[type="text"], input[type="email"], input[type="number"], select, textarea {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
     width: 100%;
     padding: 8px;
     border: 1px solid var(--line);
@@ -58,7 +67,11 @@ select, textarea {
 }
 
 input[type="submit"], input[type="reset"] { 
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
     padding: 10px 20px; 
+    font: inherit;
     cursor: pointer; 
 }
 
@@ -66,4 +79,34 @@ input[type="submit"] {
     background: var(--accent); 
     border: 0; 
     color: white; 
+}
+
+@media (max-width: 1024px) {
+    input[type="radio"], input[type="checkbox"] {
+        width: 1.25rem;
+        height: 1.25rem;
+        vertical-align: middle;
+    }
+}
+
+@media (max-width: 600px) {
+    form > p:nth-of-type(3) {
+        flex-basis: 100%;
+    }
+
+    form > p:nth-of-type(4) {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-orient: vertical;
+        -ms-flex-direction: column;
+        flex-direction: column;
+        flex: 1 1 100%;
+        align-self: stretch;
+        gap: 8px;
+    }
+
+    form > p:nth-of-type(4) input {
+        width: 100%;
+    }
 }

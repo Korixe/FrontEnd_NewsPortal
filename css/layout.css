@@ -3,7 +3,7 @@ header {
     grid-template-columns: 48px 1fr auto;
     align-items: center;
     gap: 16px;
-    padding: 12px 24px;
+    padding: 12px var(--gutter);
     background: white;
     border-bottom: 4px solid var(--accent);
     z-index: 100;
@@ -16,7 +16,11 @@ header > h1 {
 }
 
 header > nav {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -ms-flex-wrap: wrap;
+    flex-wrap: wrap;
     gap: 4px;
 }
 
@@ -24,11 +28,14 @@ nav a {
     padding: 8px 14px; 
     font-weight: 600; 
     text-decoration: none;
+    -webkit-transition: background-color 0.2s, -webkit-transform 0.2s;
     transition: background-color 0.2s, transform 0.2s;
 }
 
 nav a:hover {
     background-color: var(--soft);
+    -webkit-transform: translateY(-2px);
+    -ms-transform: translateY(-2px);
     transform: translateY(-2px);
 }
 
@@ -47,11 +54,18 @@ nav a:hover {
 }
 
 .page-feedback > header {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
+    -ms-flex-wrap: wrap;
     flex-wrap: wrap;
     align-items: center;
     gap: 16px;
-    margin: 0 -24px;
+}
+
+main {
+    padding-left: var(--gutter);
+    padding-right: var(--gutter);
 }
 
 main > section, main > article, aside {
@@ -63,8 +77,8 @@ main > section, main > article, aside {
 }
 
 footer { 
-    margin: 0 -24px; 
-    padding: 20px 24px;
+    margin: 0; 
+    padding: 20px var(--gutter);
     background: white;
     border-top: 4px solid var(--accent);
 }
@@ -73,25 +87,125 @@ footer > p {
     color: dimgray; 
     text-align: center; 
 }
+
+nav .short {
+    display: none;
+}
+
+nav .icon {
+    display: block;
+}
  
 footer > section {
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
     width: fit-content;
+    max-width: 100%;
     margin-bottom: 24px;
+    -webkit-transform-origin: left top;
+    -ms-transform-origin: left top;
     transform-origin: left top;
+    -webkit-transition: -webkit-transform 0.5s;
     transition: transform 0.5s;
 }
 
 footer > section:focus { 
+    -webkit-transform: scale(1.2);
+    -ms-transform: scale(1.2);
     transform: scale(1.2); 
+    -webkit-transition-delay: 3s;
     transition-delay: 3s; 
 }
 
-@media (max-width: 800px) {
+@media (max-width: 1024px) {
     header {
         grid-template-columns: 48px 1fr;
     }
- 
+
     header > nav {
         grid-column: 1 / -1;
+    }
+
+    .page-home > header,
+    .page-culture > header {
+        position: static;
+    }
+
+    nav a {
+        padding: 10px 14px;
+    }
+}
+
+@media (max-width: 600px) {
+    :root {
+        --gutter: 12px;
+    }
+
+    header {
+        gap: 12px;
+    }
+
+    header > h1 {
+        font-size: 1.25rem;
+    }
+
+    main > section, main > article, aside {
+        padding: 16px;
+    }
+
+    header > nav {
+        -ms-flex-wrap: nowrap;
+        flex-wrap: nowrap;
+        gap: 0;
+        border-top: 1px solid var(--line);
+    }
+
+    header > nav > a,
+    header > nav > div {
+        -webkit-box-flex: 1;
+        -ms-flex: 1 1 auto;
+        flex: 1 1 auto;
+        text-align: center;
+        white-space: nowrap;
+    }
+
+    header > nav a {
+        padding: 10px 8px;
+    }
+
+    nav .full {
+        display: none;
+    }
+
+    nav .short {
+        display: inline;
+    }
+
+    header > nav > a.nav-feedback {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -webkit-box-align: center;
+        -ms-flex-align: center;
+        align-items: center;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+        -webkit-box-flex: 0;
+        -ms-flex: 0 0 auto;
+        flex: 0 0 auto;
+        padding: 10px 14px;
+    }
+
+    .page-feedback > header > nav {
+        -webkit-box-flex: 1;
+        -ms-flex: 1 1 100%;
+        flex: 1 1 100%;
+    }
+
+    footer > section:focus {
+        -webkit-transform: scale(1.04);
+        -ms-transform: scale(1.04);
+        transform: scale(1.04);
     }
 }

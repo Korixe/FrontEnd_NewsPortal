@@ -1,4 +1,7 @@
 const nav = document.getElementsByTagName("nav")[0];
+const pageHeader = document.getElementsByTagName("header")[0];
+const mainBlock = document.getElementsByTagName("main")[0];
+const asideBlock = document.getElementsByTagName("aside")[0];
 const footer = document.getElementsByTagName("footer")[0];
 
 const cultureSections = ["Література", "Кіно", "Музика", "Театр", "Образотворче мистецтво"];
@@ -18,7 +21,7 @@ for (let i = 0; i < navLinks.length; i++) {
     }
     navHtml += '</nav></div>';
   } else {
-    navHtml += '<a href="' + href + '">' + text + '</a>';
+    navHtml += navLinks[i].outerHTML;
   }
 }
 nav.innerHTML = navHtml;
@@ -30,8 +33,10 @@ const submenuLinks = submenu.getElementsByTagName("a");
 
 cultureItem.style.position = "relative";
 cultureLink.style.display = "block";
+
 submenu.style.display = "none";
 submenu.style.background = "white";
+submenu.style.textAlign = "left";
 submenu.style.zIndex = "200";
 for (let i = 0; i < submenuLinks.length; i++) {
   submenuLinks[i].style.display = "block";
@@ -42,56 +47,97 @@ cultureLink.onclick = function () {
   return false;
 };
 
-function updateNavLayout() {
-  if (window.innerWidth <= 768) {
-    nav.style.position = "fixed";
-    nav.style.top = "116px";
-    nav.style.left = "0";
-    nav.style.width = "120px";
-    nav.style.padding = "8px";
-    nav.style.flexDirection = "column";
-    nav.style.background = "white";
-    nav.style.borderRight = "4px solid #7a1f2b";
-    nav.style.boxShadow = "2px 2px 8px rgba(0, 0, 0, 0.15)";
-    nav.style.zIndex = "150";
+function closeSubmenu() {
+  submenu.style.display = "none";
+}
 
-    document.body.style.paddingLeft = "136px";
-    document.body.style.paddingTop = "104px";
-    footer.style.marginLeft = "-136px";
-    footer.style.paddingLeft = "136px";
-
-    submenu.style.position = "static";
-    submenu.style.minWidth = "0";
-    submenu.style.border = "none";
-    submenu.style.borderLeft = "3px solid #7a1f2b";
-    submenu.style.boxShadow = "none";
-    submenu.style.margin = "4px 0 0 8px";
-  } else {
-    nav.style.position = "";
-    nav.style.top = "";
-    nav.style.left = "";
-    nav.style.width = "";
-    nav.style.padding = "";
-    nav.style.flexDirection = "";
-    nav.style.background = "";
-    nav.style.borderRight = "";
-    nav.style.boxShadow = "";
-    nav.style.zIndex = "";
-
-    document.body.style.paddingLeft = "";
-    document.body.style.paddingTop = "";
-    footer.style.marginLeft = "";
-    footer.style.paddingLeft = "";
-
-    submenu.style.position = "absolute";
-    submenu.style.top = "100%";
-    submenu.style.left = "0";
-    submenu.style.minWidth = "230px";
-    submenu.style.border = "1px solid rgb(200, 208, 216)";
-    submenu.style.borderTop = "3px solid #7a1f2b";
-    submenu.style.boxShadow = "0 4px 10px rgba(0, 0, 0, 0.15)";
-    submenu.style.margin = "0";
+document.addEventListener("click", function (event) {
+  if (!cultureItem.contains(event.target)) {
+    closeSubmenu();
   }
+});
+
+document.addEventListener("keydown", function (event) {
+  if (event.key === "Escape") {
+    closeSubmenu();
+  }
+});
+
+const navProps = ["position", "top", "left", "width", "maxHeight", "padding", "flexDirection",
+  "flexWrap", "background", "borderRight", "boxShadow", "zIndex", "overflowY"];
+
+function clearNavStyles() {
+  for (let i = 0; i < navProps.length; i++) {
+    nav.style[navProps[i]] = "";
+  }
+}
+
+function setSubmenuDropdown(centered) {
+  submenu.style.position = "absolute";
+  submenu.style.top = "100%";
+  submenu.style.left = centered ? "50%" : "0";
+  submenu.style.transform = centered ? "translateX(-50%)" : "";
+  submenu.style.minWidth = centered ? "210px" : "230px";
+  submenu.style.border = "1px solid rgb(200, 208, 216)";
+  submenu.style.borderTop = "3px solid #7a1f2b";
+  submenu.style.boxShadow = "0 4px 10px rgba(0, 0, 0, 0.15)";
+  submenu.style.margin = "0";
+}
+
+function setSubmenuInline() {
+  submenu.style.position = "static";
+  submenu.style.left = "";
+  submenu.style.transform = "";
+  submenu.style.minWidth = "0";
+  submenu.style.border = "none";
+  submenu.style.borderLeft = "3px solid #7a1f2b";
+  submenu.style.boxShadow = "none";
+  submenu.style.margin = "4px 0 0 8px";
+}
+
+function updateNavLayout() {
+  const width = window.innerWidth;
+
+  clearNavStyles();
+  mainBlock.style.paddingLeft = "";
+  footer.style.paddingLeft = "";
+  if (asideBlock) {
+    asideBlock.style.marginLeft = "";
+  }
+
+  if (width > 768) {
+    setSubmenuDropdown(false);
+    return;
+  }
+
+  if (width <= 600) {
+    setSubmenuDropdown(true);
+    return;
+  }
+
+  const top = pageHeader.offsetHeight + 16;
+
+  nav.style.position = "fixed";
+  nav.style.top = top + "px";
+  nav.style.left = "0";
+  nav.style.width = "160px";
+  nav.style.maxHeight = (window.innerHeight - top - 16) + "px";
+  nav.style.overflowY = "auto";
+  nav.style.padding = "8px";
+  nav.style.flexDirection = "column";
+  nav.style.flexWrap = "nowrap";
+  nav.style.background = "white";
+  nav.style.borderRight = "4px solid #7a1f2b";
+  nav.style.boxShadow = "2px 2px 8px rgba(0, 0, 0, 0.15)";
+  nav.style.zIndex = "150";
+
+  mainBlock.style.paddingLeft = "176px";
+  footer.style.paddingLeft = "176px";
+  if (asideBlock) {
+    asideBlock.style.marginLeft = "176px";
+  }
+
+  setSubmenuInline();
 }
 
 updateNavLayout();

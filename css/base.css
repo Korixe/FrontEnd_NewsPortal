@@ -3,10 +3,18 @@
     --soft: hsl(350, 45%, 94%);
     --line: rgb(200, 208, 216);
     --head: Georgia, serif;
-    --body: "Segoe UI", Arial, sans-serif;  
+    --body: "Segoe UI", Arial, sans-serif;
+    --gutter: 24px;
+}
+
+html {
+    -webkit-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    text-size-adjust: 100%;
 }
 
 * {
+    -webkit-box-sizing: border-box;
     box-sizing: border-box;
 }
 
@@ -20,15 +28,21 @@ hr {
 
 img {
     max-width: 100%;
+    height: auto;
 }
 
 body {
     margin: 0;
-    padding: 0 24px;
+    padding: 0;
+    background: -webkit-linear-gradient(top, hsl(210, 25%, 97%), hsl(210, 20%, 91%));
     background: linear-gradient(180deg, hsl(210, 25%, 97%), hsl(210, 20%, 91%));
     background-attachment: fixed;
     color: hsl(0, 0%, 15%);
     font: 400 1rem/1.6 var(--body);
+}
+
+main, footer {
+    overflow-wrap: break-word;
 }
 
 h1, h2, h3 {
@@ -66,7 +80,7 @@ a[target="_blank"]::after {
 main > a {
     display: inline-block;
     margin: 8px 0 16px;
-    padding: 8px 16px;
+    padding: 10px 16px;
     border: 2px solid var(--accent);
     border-radius: 4px;
     font-weight: 600;
@@ -79,4 +93,10 @@ main > a::before {
 
 main > a:hover {
     background: var(--soft);
+}
+
+@media (hover: none) and (pointer: coarse) {
+    body {
+        background-attachment: scroll;
+    }
 }
